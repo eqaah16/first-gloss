@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLOSSTALK | Smart Lipstick for Effortless Communication</title>
+
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff5f8;
+    color: #333;
+    }
+
+    header {
+    background-color: #f8b3c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: top 0.3s ease; 
+    }
+
+    html {
+    scroll-behavior: smooth;
+    }
+
+    section {
+    padding: 0px 0px;
+    max-width: 750px;
+    margin: auto;
+    }
+
+    h2 {
+    color: #ff4f81;
+    }
+
+    footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    }
+
+    .promo-bar {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: 10px 20px;
+    font-weight: bold;
+    }
+
+    .nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 75px;
+    width: 100%;
+    text-align: center;
+    }
+
+    .nav a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    }
+
+    .logo {
+    width: 100px;
+    height: 100px;
+    background-image: url('LOGO.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 20px;
+    }
+
+    .cta {
+    text-align: center;
+    margin-top: 20px;
+    }
+
+    .cta button {
+    background-color: #ff4f81;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    }
+
+    .image-slideshow {
+    position: relative;
+    max-width: 100%;
+    height: 800px;
+    overflow: hidden;
+    }
+
+    .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    }
+
+    .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .dots {
+    text-align: center;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    }
+
+    .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.3s;
+    }
+
+    .dot.active {
+    opacity: 1;
+    }
+
+    .bg-pic {
+    background: url("ABOUT.png");
+    background-size: cover;
+    background-attachment: fixed;}
+
+    .wrap {
+    width: 850px; margin: auto;}  
+
+    .info-section {
+    background: url("ABOUT.png") no-repeat center;
+    background-size: cover;
+    padding: 360px 530px;
+    }
+
+    .info-container {
+    display: inline-flex;
+    justify-content: auto;
+    gap: 55px;
+    flex-wrap: nowrap;
+    max-width: 1000px;
+    margin: auto;
+    }
+
+    .info-box {
+    background-color: rgba(255, 192, 203, 0.85);
+    padding: 30px;
+    border-radius: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    }
+
+    .info-box:hover {
+    transform: scale(1.05) rotate(-1deg);
+    }
+
+    .info-box h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #000;
+    }
+
+    .info-box p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* STEP SECTION */
+    .steps-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 60px 520px;
+      background-color: #f7b1c6;
+      text-align: center;
+    }
+
+    .step-box {
+      background-color: transparent;
+      padding: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-box img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .step-box h3 {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .step-box p {
+      font-size: 14px;
+      color: #000;
+    }
+
+    .step-box:hover {
+      transform: scale(1.05);
+    }
+
+    /* BENEFITS SECTION */
+    .benefits-section {
+      background-color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .benefits-section h2 {
+      font-size: 24px;
+      margin-bottom: 40px;
+      font-weight: bold;
+    }
+
+    .benefit-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-box img {
+      width: 40px;
+      margin-bottom: 10px;
+    }
+
+    .benefit-box p {
+      font-size: 14px;
+      font-weight: bold;
+      color: #000;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="promo-bar">
+    HEY BESTIE, GET A FREE <strong>GLOSSTALK</strong> LIPGLOSS WHEN YOU BUY 2 OR MORE. NO SPECIAL CODE REQUIRED!
+  </div>
+
+
+  <header id="navbar">
+    <div class="nav">
+      <a href="#">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#how">HOW IT WORKS</a>
+      <div class="logo"></div>
+      <a href="#features">FEATURES</a>
+      <a href="#shop">SHOP NOW</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </header>
+
+  <section id="home" class="image-slideshow">
+    <div class="slide fade">
+     <img src="JELLY.jpg" alt="Slide 1">
+    </div>
+    <div class="slide fade">
+      <img src="SLIDE2.gif" alt="Slide 2">
+    </div>
+    <div class="slide fade">
+      <img src="JELLY2.jpg" alt="Slide 3">
+    </div>
+
+    <div class="dots">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </section>
+
+
+
+  <section id="about" class="info-section">
+  <div class="info-container">
+    <div class="info-box">
+      <h3>WHAT</h3>
+      <p>A smart lipstick that allows users to speak and understand any language instantly when applied.</p>
+    </div>
+    <div class="info-box">
+      <h3>WHY</h3>
+      <p>GlossTalk is more than just makeup—it's a bridge between beauty and connection.</p>
+    </div>
+    <div class="info-box">
+      <h3>HOW</h3>
+      <p>Swipe,<br>Speak,<br>Connect!</p>
+    </div>
+  </div>
+  </section>
+
+
+
+  <section id="how" class="steps-section">
+    <div class="step-box">
+      <img src="APPLY.jpg" alt="Apply GLOSSTALK">
+      <h3>STEP 1</h3>
+      <p>Apply GLOSSTALK like regular lipstick</p>
+    </div>
+    <div class="step-box">
+      <img src="APPLY2.jpg" alt="Speak your language">
+      <h3>STEP 2</h3>
+      <p>Speak in your language</p>
+    </div>
+    <div class="step-box">
+      <img src="APPLY3.jpg" alt="Translated instantly">
+      <h3>STEP 3</h3>
+      <p>Your words are translated instantly!</p>
+    </div>
+    <div class="step-box">
+      <img src="APPLY4.jpg" alt="Understand and respond">
+      <h3>STEP 4</h3>
+      <p>Understand and respond in real-time</p>
+    </div>
+  </section>
+
+  <section id="benefits" class="benefits-section">
+    <h2>BE IN THE KNOW</h2>
+    <div class="benefit-boxes">
+      <div class="benefit-box">
+        <img src="icon-safe.png" alt="Safe Formula Icon">
+        <p>SAFE FORMULA</p>
+      </div>
+      <div class="benefit-box">
+        <img src="icon-easy.png" alt="Easy to Use Icon">
+        <p>HIGHLY EFFECTIVE & EASY TO USE</p>
+      </div>
+      <div class="benefit-box">
+        <img src="icon-crueltyfree.png" alt="Cruelty Free Icon">
+        <p>CRUELTY FREE</p>
+      </div>
+      <div class="benefit-box">
+        <img src="icon-chatgpt.png" alt="ChatGPT Supported Icon">
+        <p>SUPPORTED BY CHATGPT</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="features">
+    <h2>Features & Benefits</h2>
+    <ul>
+      <li>Instant Language Translation</li>
+      <li>Smart Beauty Technology</li>
+      <li>Portable & Stylish</li>
+      <li>Great for Travelers, Professionals, and Students</li>
+    </ul>
+  </section>
+
+  <section id="shop">
+    <h2>Shop Now</h2>
+    <p><strong>Standard GLOSSTALK:</strong> $80</p>
+    <p><strong>Premium GLOSSTALK:</strong> $120</p>
+    <div class="cta">
+      <button>Pre-Order Now</button>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: support@glosstalk.com</p>
+    <p>Phone: +123-456-7890</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 GLOSSTALK. All rights reserved.</p>
+  </footer>
+
+
+
+
+
+  <script>
+  let slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    let dots = document.getElementsByClassName("dot");
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].classList.remove("active");
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].classList.add("active");
+
+    setTimeout(showSlides, 6000); // Change every 4 seconds
+  }
+
+  function currentSlide(n) {
+    slideIndex = n - 1;
+    showSlides();
+  }
+  </script>
+
+  <script>
+  let lastScrollTop = 0;
+  const navbar = document.getElementById("navbar");
+
+  window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // Scrolling down
+      navbar.style.top = "-100px"; // hide it (adjust value based on header height)
+    } else {
+      // Scrolling up
+      navbar.style.top = "0";
+    }
+
+    lastScrollTop = scrollTop;
+  });
+  </script>
+
+
+
+</body>
+</html>
